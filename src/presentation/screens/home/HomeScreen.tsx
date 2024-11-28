@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { HomeNavigator } from '../../routes';
 
 export const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
+    <HomeNavigator />
   );
 };
 

@@ -4,19 +4,20 @@ import { Text } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-paper';
 import { BottomNavigationBar } from '../components';
+import { BooksScreen } from '../screens';
 
 interface Route {
   name: string;
   label: string;
   icon: string;
-  component?: React.ReactNode;
+  component: () => React.JSX.Element;
 }
 
 const routes: Route[] = [
-  {name: 'Books', label: 'Books', icon: 'book'},
-  {name: 'Search', label: 'Search', icon: 'search'},
-  {name: 'Quizzes', label: 'Quizzes', icon: 'grid'},
-  {name: 'Profile', label: 'Profile', icon: 'user'},
+  {name: 'Books', label: 'Books', icon: 'book', component: BooksScreen},
+  {name: 'Search', label: 'Search', icon: 'search', component: () => <Text>Search</Text>},
+  {name: 'Quizzes', label: 'Quizzes', icon: 'grid', component: () => <Text>Quizzes</Text>},
+  {name: 'Profile', label: 'Profile', icon: 'user', component: () => <Text>Profile</Text>},
 ];
 
 const Tab = createBottomTabNavigator();
@@ -32,7 +33,7 @@ export const HomeNavigator = () => {
         <Tab.Screen
           key={index}
           name={route.name}
-          component={() => <Text>{route.label}</Text>}
+          component={route.component}
           options={{
             tabBarLabel: route.label,
             tabBarIcon: ({ color, size }) => <Icon source={route.icon} color={color} size={size} />,

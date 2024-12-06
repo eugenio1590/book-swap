@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { Card, Text, useTheme } from 'react-native-paper';
+import { Card, Divider, Text, useTheme } from 'react-native-paper';
 import { TradeType } from 'core';
 import { capitalize } from 'util/string';
-import { ProfilePicture, TradeButton } from 'components/shared';
+import { BookCoverPicture, ProfilePicture, TradeButton } from 'components/shared';
 
 export interface Props extends HeaderProps, ContentProps {
   id: number;
@@ -15,6 +15,7 @@ export const BookItem = (props : Props) => {
   return (
     <Card mode="contained" style={{...styles.card, backgroundColor: theme.colors.background}}>
       <Header {...props} />
+      <Divider style={[styles.divider, {backgroundColor: theme.colors.onSurfaceVariant}]} />
       <Content {...props} />
     </Card>
   );
@@ -54,12 +55,12 @@ interface ContentProps {
   onBookClick: () => void;
 }
 
-const Content = ({book, author, onBookClick} : ContentProps) => {
+const Content = ({book, image, author, onBookClick} : ContentProps) => {
   const theme = useTheme();
   return (
     <Pressable onPress={onBookClick}>
       <Card.Content style={styles.row}>
-        <Text style={styles.image}>Image</Text>
+        <BookCoverPicture uri={image} />
         <View>
           <Text variant="titleLarge" style={styles.title}>{book}</Text>
           <Text variant="bodyMedium" style={[styles.row, {color: theme.colors.onSurfaceVariant}]}>
@@ -82,6 +83,11 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  divider: {
+    marginHorizontal: 16,
+    marginBottom: 16,
+    opacity: 0.5,
   },
   title: {
     fontWeight: 'bold',

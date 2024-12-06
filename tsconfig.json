@@ -4,6 +4,7 @@
     "baseUrl": "src",
     "paths": {
       "config": ["config"],
+      "core": ["core"],
       "components/*": ["presentation/components/*"],
       "routes": ["presentation/routes"],
       "screens": ["presentation/screens"],

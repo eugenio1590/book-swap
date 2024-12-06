@@ -9,6 +9,7 @@ module.exports = {
       alias: {
         map: [
           ['config', path.resolve(__dirname, 'src/config')],
+          ['core', path.resolve(__dirname, 'src/core')],
           ['components', path.resolve(__dirname, 'src/presentation/components')],
           ['routes', path.resolve(__dirname, 'src/presentation/routes')],
           ['screens', path.resolve(__dirname, 'src/presentation/screens')],

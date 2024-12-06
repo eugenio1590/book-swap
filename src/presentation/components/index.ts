@@ -1,1 +1,1 @@
-export * from './shared/BottomNavigationBar';
+export * from './shared';

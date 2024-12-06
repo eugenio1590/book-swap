@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeNavigator } from '../../routes';
+import { HomeNavigator } from 'routes';
 
 export const HomeScreen = () => {
   return (

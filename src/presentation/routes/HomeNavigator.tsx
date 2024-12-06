@@ -3,8 +3,8 @@ import React from 'react';
 import { Text } from '@react-navigation/elements';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-paper';
-import { BottomNavigationBar } from '../components';
-import { BooksScreen } from '../screens';
+import { BottomNavigationBar } from 'components/shared';
+import { BooksScreen } from 'screens';
 
 interface Route {
   name: string;

@@ -11,6 +11,7 @@ module.exports = {
           components: './src/presentation/components',
           routes: './src/presentation/routes',
           screens: './src/presentation/screens',
+          store: './src/presentation/store',
           util: './src/util',
         },
       },

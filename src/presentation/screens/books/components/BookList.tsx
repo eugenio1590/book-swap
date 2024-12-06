@@ -18,4 +18,5 @@ export const BookList = ({items} : Props) => {
   );
 };
 
+export { type Item };
 export default BookList;

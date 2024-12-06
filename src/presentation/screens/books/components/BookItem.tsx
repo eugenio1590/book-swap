@@ -2,7 +2,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Card, Divider, Text, useTheme } from 'react-native-paper';
-import { TradeType } from 'core';
+import { type TradeType } from 'core';
 import { capitalize } from 'util/string';
 import { BookCoverPicture, ProfilePicture, TradeButton } from 'components/shared';
 

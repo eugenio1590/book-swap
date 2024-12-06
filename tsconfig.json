@@ -8,6 +8,7 @@
       "components/*": ["presentation/components/*"],
       "routes": ["presentation/routes"],
       "screens": ["presentation/screens"],
+      "store": ["presentation/store"],
       "util": ["util"],
     }
   }

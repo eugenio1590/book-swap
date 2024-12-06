@@ -12,6 +12,7 @@ module.exports = {
           ['components', path.resolve(__dirname, 'src/presentation/components')],
           ['routes', path.resolve(__dirname, 'src/presentation/routes')],
           ['screens', path.resolve(__dirname, 'src/presentation/screens')],
+          ['util', path.resolve(__dirname, 'src/util')],
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       },

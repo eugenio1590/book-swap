@@ -2,24 +2,27 @@
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Card, Divider, Text, useTheme } from 'react-native-paper';
+import { type NavigationProp, useNavigation } from '@react-navigation/native';
 import { Trade, type TradeType } from 'core';
 import { capitalize } from 'util/string';
 import { BookCoverPicture } from 'components/books';
 import { ProfilePicture } from 'components/profile';
 import { StyledButton } from 'components/shared';
+import { MainNavigatorParams } from 'routes';
 
 interface Props {
   trade: Trade;
 }
 
-export const TradableBookCard = ({trade} : Props) => {
+export const TradableBookCard = ({trade: {type, book, user}} : Props) => {
   const theme = useTheme();
-  const {type, book, user} = trade;
+  const navigation = useNavigation<NavigationProp<MainNavigatorParams>>();
+  const onBookClick = () => navigation.navigate('Book', { book });
   return (
     <Card mode="contained" style={{...styles.card, backgroundColor: theme.colors.background}}>
       <Header user={user.name} avatar={user.image} trade={type} />
       <Divider style={[styles.divider, {backgroundColor: theme.colors.onSurfaceVariant}]} />
-      <Content book={book.title} author={book.author} cover={book.image} />
+      <Content book={book.title} author={book.author} cover={book.image} onBookClick={onBookClick} />
     </Card>
   );
 };
@@ -55,11 +58,11 @@ interface ContentProps {
   book: string;
   cover: string;
   author: string;
+  onBookClick: () => void;
 }
 
-const Content = ({book, cover, author} : ContentProps) => {
+const Content = ({book, cover, author, onBookClick} : ContentProps) => {
   const theme = useTheme();
-  const onBookClick = () => console.log('On book click'); // TODO: replace with navigation
   return (
     <Pressable onPress={onBookClick}>
       <Card.Content style={styles.row}>

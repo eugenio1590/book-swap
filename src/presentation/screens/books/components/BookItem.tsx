@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Card, Divider, Text, useTheme } from 'react-native-paper';
 import { type TradeType } from 'core';
 import { capitalize } from 'util/string';
-import { BookCoverPicture, ProfilePicture, TradeButton } from 'components/shared';
+import { BookCoverPicture, ProfilePicture, StyledButton } from 'components/shared';
 
 export interface Props extends HeaderProps, ContentProps {
   id: number;
@@ -40,9 +40,9 @@ const Header = ({user, avatar, trade, onTradeClick} : HeaderProps) => {
       style={styles.header}
       left={(props) => <ProfilePicture {...props} uri={avatar} placeholder={user} />}
       right={(props) => (
-        <TradeButton {...props} variant={variant} onPress={onTradeClick}>
+        <StyledButton {...props} variant={variant} onPress={onTradeClick}>
           {capitalize(trade)}
-        </TradeButton>
+        </StyledButton>
       )}
     />
   );

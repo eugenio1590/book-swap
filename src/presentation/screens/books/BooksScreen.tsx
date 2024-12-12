@@ -20,18 +20,7 @@ export const BooksScreen = () => {
       <FlatList
         style={{backgroundColor: theme.colors.surface}}
         data={trades}
-        renderItem={({item}) => (
-          <TradableBookCard
-            user={item.user.name}
-            avatar={item.user.image}
-            book={item.book.title}
-            author={item.book.author}
-            cover={item.book.image}
-            trade={item.type}
-            onTradeClick={ () => console.log('On trade click')}
-            onBookClick={ () => console.log('On book click')}
-          />
-        )}
+        renderItem={({item}) => <TradableBookCard trade={item} />}
         keyExtractor={item => item.id.toString()}
       />
     </View>

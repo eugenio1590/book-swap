@@ -2,21 +2,24 @@
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Card, Divider, Text, useTheme } from 'react-native-paper';
-import { type TradeType } from 'core';
+import { Trade, type TradeType } from 'core';
 import { capitalize } from 'util/string';
 import { BookCoverPicture } from 'components/books';
 import { ProfilePicture } from 'components/profile';
 import { StyledButton } from 'components/shared';
 
-type Props = HeaderProps & ContentProps;
+interface Props {
+  trade: Trade;
+}
 
-export const TradableBookCard = (props : Props) => {
+export const TradableBookCard = ({trade} : Props) => {
   const theme = useTheme();
+  const {type, book, user} = trade;
   return (
     <Card mode="contained" style={{...styles.card, backgroundColor: theme.colors.background}}>
-      <Header {...props} />
+      <Header user={user.name} avatar={user.image} trade={type} />
       <Divider style={[styles.divider, {backgroundColor: theme.colors.onSurfaceVariant}]} />
-      <Content {...props} />
+      <Content book={book.title} author={book.author} cover={book.image} />
     </Card>
   );
 };
@@ -25,12 +28,12 @@ interface HeaderProps {
   user: string;
   avatar: string;
   trade: TradeType;
-  onTradeClick: () => void;
 }
 
-const Header = ({user, avatar, trade, onTradeClick} : HeaderProps) => {
+const Header = ({user, avatar, trade} : HeaderProps) => {
   const theme = useTheme();
   const variant = trade === 'buy' ? 'primary' : 'secondary';
+  const onTradeClick = () => console.log('On trade click'); // TODO: replace with navigation
   return (
     <Card.Title
       title={user}
@@ -52,11 +55,11 @@ interface ContentProps {
   book: string;
   cover: string;
   author: string;
-  onBookClick: () => void;
 }
 
-const Content = ({book, cover, author, onBookClick} : ContentProps) => {
+const Content = ({book, cover, author} : ContentProps) => {
   const theme = useTheme();
+  const onBookClick = () => console.log('On book click'); // TODO: replace with navigation
   return (
     <Pressable onPress={onBookClick}>
       <Card.Content style={styles.row}>

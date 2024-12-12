@@ -8,11 +8,9 @@ import { BookCoverPicture } from 'components/books';
 import { ProfilePicture } from 'components/profile';
 import { StyledButton } from 'components/shared';
 
-export interface Props extends HeaderProps, ContentProps {
-  id: number;
-}
+type Props = HeaderProps & ContentProps;
 
-export const BookItem = (props : Props) => {
+export const TradableBookCard = (props : Props) => {
   const theme = useTheme();
   return (
     <Card mode="contained" style={{...styles.card, backgroundColor: theme.colors.background}}>
@@ -52,17 +50,17 @@ const Header = ({user, avatar, trade, onTradeClick} : HeaderProps) => {
 
 interface ContentProps {
   book: string;
-  image: string;
+  cover: string;
   author: string;
   onBookClick: () => void;
 }
 
-const Content = ({book, image, author, onBookClick} : ContentProps) => {
+const Content = ({book, cover, author, onBookClick} : ContentProps) => {
   const theme = useTheme();
   return (
     <Pressable onPress={onBookClick}>
       <Card.Content style={styles.row}>
-        <BookCoverPicture uri={image} />
+        <BookCoverPicture uri={cover} />
         <View>
           <Text variant="titleLarge" style={styles.title}>{book}</Text>
           <Text variant="bodyMedium" style={[styles.row, {color: theme.colors.onSurfaceVariant}]}>
@@ -99,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BookItem;
+export default TradableBookCard;

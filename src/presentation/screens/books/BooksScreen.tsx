@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { ProgressBar, useTheme } from 'react-native-paper';
 import { useBooksStore } from 'store';
-import BookList from './components/BookList';
+import { TradableBookCard } from 'components/books';
 
 export const BooksScreen = () => {
   const theme = useTheme();
@@ -17,7 +17,23 @@ export const BooksScreen = () => {
   return (
     <View>
       {isLoading && <ProgressBar indeterminate={true} color={theme.colors.primary} />}
-      <BookList items={trades} />
+      <FlatList
+        style={{backgroundColor: theme.colors.surface}}
+        data={trades}
+        renderItem={({item}) => (
+          <TradableBookCard
+            user={item.user.name}
+            avatar={item.user.image}
+            book={item.book.title}
+            author={item.book.author}
+            cover={item.book.image}
+            trade={item.type}
+            onTradeClick={ () => console.log('On trade click')}
+            onBookClick={ () => console.log('On book click')}
+          />
+        )}
+        keyExtractor={item => item.id.toString()}
+      />
     </View>
   );
 };

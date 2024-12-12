@@ -5,7 +5,8 @@ import { Card, Divider, Text, useTheme } from 'react-native-paper';
 import { type TradeType } from 'core';
 import { capitalize } from 'util/string';
 import { BookCoverPicture } from 'components/books';
-import { ProfilePicture, StyledButton } from 'components/shared';
+import { ProfilePicture } from 'components/profile';
+import { StyledButton } from 'components/shared';
 
 export interface Props extends HeaderProps, ContentProps {
   id: number;
